@@ -8,7 +8,7 @@ module.exports = function (sequelize, Sequelize) {
       }
     },
 
-    name: {
+    full_name: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
