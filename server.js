@@ -1,32 +1,26 @@
-var express = require("express");
-var db = require("./models");
+const express = require("express");
+const mongoose = require("mongoose");
 const routes = require("./routes");
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-
-var PORT = process.env.PORT || 3001;
-
-var app = express();
-
-app.use(express.urlencoded({
-    extended: true
-}));
+// Define middleware here
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// Make public a static folder
-const root = require("path").join(__dirname, "client", "build");
-app.use(express.static(root));
-app.use(express.static(path.join(__dirname, "client/public")));
-
-// Use the routes folder
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+// Add routes, both API and view
 app.use(routes);
 
-// Starting the server, syncing models
-db.sequelize.sync(syncOptions).then(function() {
-    app.listen(PORT, function() {
-        console.log(
-            "==> 🌎 Listening on port %s.  Visit http://localhost%s/ in your browser.",
-            PORT,
-            PORT
-        );
-    });
+// Connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/employee_db", {
+  userNewUrlParser: true })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch(err => console.log(`Cannot connect to database: ${err}`))
+
+// Start the API server
+app.listen(PORT, function() {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });

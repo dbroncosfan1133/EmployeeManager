@@ -1,10 +1,31 @@
 import React from "react";
 import MainHero from "../components/MainHero/MainHero";
+import { Link } from "react-router-dom";
+import DeleteBtn from "../components/DeleteBtn/DeleteBtn";
 import SearchBar from "../components/SearchBar/SearchBar";
+import API from "../utils/API";
 
 class EmployeesPage extends React.Component {
   state = {
     employees: []
+  };
+
+  componentDidMount() {
+    this.getAllEmployees();
+  }
+
+  getAllEmployees = () => {
+    API.getEmployees()
+      .then(res =>
+        this.setState({ employees: res.data })
+      )
+      .catch(err => console.log(err));
+  };
+
+  deleteEmployees = id => {
+    API.deleteEmployee(id)
+      .then(res => this.getAllEmployees())
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -31,24 +52,57 @@ class EmployeesPage extends React.Component {
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Street Address</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Zip Code</th>
-                    <th>Email Address</th>
-                    <th>Phone Number</th>
-                    <th>Position Held</th>
+                    <th>Position</th>
                     <th>Department</th>
-                    <th>Start Date</th>
-                    <th>Term Date</th>
-                    <th>Employment Status</th>
                     <th>Shift</th>
-                    <th>Manager</th>
+                    <th>Employment Status</th>
+                    <th>Delete Employee</th>
                   </tr>
                 </thead>
                 <tbody>
                   <td>
-
+                    {this.state.employees.map(employee => (
+                      <Link to={"/details/" + employee._id}>
+                        <div className="is-size-5">
+                          {employee.full_name}
+                        </div>
+                      </Link>
+                    ))}
+                  </td>
+                  <td>
+                    {this.state.employees.map(employee => (
+                      <div className="is-size-5">
+                        {employee.position}
+                      </div>
+                    ))}
+                  </td>
+                  <td>
+                    {this.state.employees.map(employee => (
+                      <div className="is-size-5">
+                        {employee.department}
+                      </div>
+                    ))}
+                  </td>
+                  <td>
+                    {this.state.employees.map(employee => (
+                      <div className="is-size-5">
+                        {employee.shift}
+                      </div>
+                    ))}
+                  </td>
+                  <td>
+                    {this.state.employees.map(employee => (
+                      <div className="is-size-5">
+                        {employee.employment_status}
+                      </div>
+                    ))}
+                  </td>
+                  <td>
+                    {this.state.employees.map(employee => (
+                      <div>
+                        <DeleteBtn onClick={() => this.deleteEmployee(employee._id)} />
+                      </div>
+                    ))}
                   </td>
                 </tbody>
               </table>

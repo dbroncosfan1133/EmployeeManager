@@ -1,135 +1,33 @@
-module.exports = function (sequelize, Sequelize) {
-  var Employees = sequelize.define("Employees", {
-    category_id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-      validate: {
-        len: [1, 140]
-      }
-    },
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-    full_name: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 140]
-      }
+const EmployeeSchema = new Schema({
+  full_name: { type: String, unique: false },
+  address: { type: String, unique: false },
+  city: { type: String, unique: false },
+  state: { type: String, unique: false },
+  zip_code: { type: String, unique: false },
+  email_address: { type: String, unique: false },
+  phone_number: { 
+    type: String, 
+    validate: {
+      validator: function(v) {
+        return /\d{3}-\d{3}-\d{4}/.test(v);
+      },
+      message: props => `${props.value} is not a valid phone number!`
     },
+    required: [true, "Employee phone number required"],
+    unique: false
+  },
+  position: { type: String, unique: false },
+  department: { type: String, unique: false },
+  start_date: { type: String, unique: false },
+  end_date: { type: String, unique: false },
+  employment_status: { type: String, unique: false },
+  shift: { type: String, unique: false },
+  manager: { type: String, unique: false },
+});
 
-    address: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      validate: {
-        len: [1,140]
-      }
-    },
+const Employee = mongoose.model("Employee", EmployeeSchema);
 
-    city: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 140]
-      }
-    },
-
-    state: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 140]
-      }
-    },
-
-    zip_code: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-      validate: {
-        len: [1, 5]
-      }
-    },
-
-    email_address: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true,
-        len: [1, 140]
-      }
-    },
-
-    phone_number: {
-      type: Sequelize.STRING,
-      allowNull: true,
-      validate: {
-        len: [1, 15] 
-      }
-    },
-
-    position: {
-      type: Sequelize.STRING,
-      allowNull: true,
-      validate: {
-        len: [1, 65]
-      }
-    },
-
-    department: {
-      type: Sequelize.STRING,
-      allowNull: true,
-      validate: {
-        len: [1, 65]
-      }
-    },
-
-    start_date: {
-      type: Sequelize.DATEONLY,
-      allowNull: false
-    },
-
-    end_date: {
-      type: Sequelize.DATEONLY,
-      allowNull: true
-    },
-
-    employment_status: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 140]
-      }
-    },
-
-    shift: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 20]
-      }
-    },
-
-    manager: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 140]
-      }
-    },
-
-    photo: {
-      type: Sequelize.STRING,
-      allowNull: true,
-      validate: {
-        isUrl: true
-      }
-    },
-
-    favorite_color: {
-      type: Sequelize.STRING,
-      allowNull: true,
-      validate: {
-        len: [1, 25]
-      }
-    }
-  });
-  return Employees;
-};
+module.exports = Employee;
