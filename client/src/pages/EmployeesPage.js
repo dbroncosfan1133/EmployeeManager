@@ -2,6 +2,7 @@ import React from "react";
 import MainHero from "../components/MainHero/MainHero";
 import SearchBar from "../components/SearchBar/SearchBar";
 import EmployeeTable from "../components/EmployeeTable/employeeTable";
+import NewEmployeeBtn from "../components/NewEmployeeBtn/NewEmployeeBtn";
 
 function EmployeesPage() {
   return (
@@ -17,6 +18,9 @@ function EmployeesPage() {
           <div className="level-right">
             <div className="level-item">
               <SearchBar />
+            </div>
+            <div className="level-item">
+              <NewEmployeeBtn />
             </div>
           </div>
         </div>
