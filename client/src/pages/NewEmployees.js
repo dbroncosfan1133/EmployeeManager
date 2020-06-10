@@ -1,7 +1,6 @@
 import React from "react";
 import NewEmpHero from "../components/NewEmpHero/NewEmpHero";
 import ClearFormBtn from "../components/ClearFormBtn/ClearFormBtn";
-import BackBtn from "../components/BackBtn/BackBtn";
 import { Input, FormBtn } from "../components/Form/Form";
 import API from "../utils/API"
 

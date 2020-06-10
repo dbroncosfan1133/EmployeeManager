@@ -2,7 +2,6 @@ import React from "react";
 import MainHero from "../components/MainHero/MainHero";
 import SearchBar from "../components/SearchBar/SearchBar";
 import EmployeeTable from "../components/EmployeeTable/employeeTable";
-import NewEmployeeBtn from "../components/NewEmployeeBtn/NewEmployeeBtn";
 
 function EmployeesPage() {
   return (
