@@ -19,9 +19,6 @@ function EmployeesPage() {
             <div className="level-item">
               <SearchBar />
             </div>
-            <div className="level-item">
-              <NewEmployeeBtn />
-            </div>
           </div>
         </div>
         <hr />

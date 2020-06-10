@@ -46,7 +46,7 @@ class EmployeesTable extends React.Component {
               {this.state.employees.map(employee => (
                 <Link to={"/employeedetails/" + employee._id}>
                   <div className="is-size-5">
-                    {employee.full_name}
+                    {employee.legalName}
                   </div>
                 </Link>
               ))}
@@ -75,14 +75,14 @@ class EmployeesTable extends React.Component {
             <td>
               {this.state.employees.map(employee => (
                 <div className="is-size-5">
-                  {employee.employment_status}
+                  {employee.employmentStatus}
                 </div>
               ))}
             </td>
             <td>
               {this.state.employees.map(employee => (
                 <div>
-                  <DeleteBtn onClick={() => this.deleteEmployee(employee._id)} />
+                  <DeleteBtn onClick={() => this.deleteEmployees(employee._id)} />
                 </div>
               ))}
             </td>

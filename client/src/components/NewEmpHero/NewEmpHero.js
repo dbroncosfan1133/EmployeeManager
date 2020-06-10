@@ -1,7 +1,7 @@
 import React from "react";
-import NewEmployeeBtn from "../NewEmployeeBtn/NewEmployeeBtn";
+import BackBtn from "../BackBtn/BackBtn";
 
-function MainHero() {
+function NewEmpHero() {
   return (
     <div className="hero is-success is-bold">
       <div className="hero-body">
@@ -13,7 +13,7 @@ function MainHero() {
           </div>
           <div className="level-right">
             <div className="level-item">
-              <NewEmployeeBtn />
+              <BackBtn />
             </div>
           </div>
         </div>
@@ -22,4 +22,4 @@ function MainHero() {
   );
 }
 
-export default MainHero;
+export default NewEmpHero;

@@ -56,7 +56,7 @@ class EmployeeData extends React.Component {
                 <tbody>
                   <td>
                     <div className="is-size-6">
-                      {this.state.employeeDetail.full_name}
+                      {this.state.employeeDetail.legalName}
                     </div>
                   </td>
                   <td>
@@ -76,17 +76,17 @@ class EmployeeData extends React.Component {
                   </td>
                   <td>
                     <div className="is-size-6">
-                      {this.state.employeeDetail.zip_code}
+                      {this.state.employeeDetail.zipCode}
                     </div>
                   </td>
                   <td>
                     <div className="is-size-6">
-                      {this.state.employeeDetail.email_address}
+                      {this.state.employeeDetail.emailAddress}
                     </div>
                   </td>
                   <td>
                     <div className="is-size-6">
-                      {this.state.employeeDetail.phone_number}
+                      {this.state.employeeDetail.phoneNumber}
                     </div>
                   </td>
                   <td>
@@ -101,17 +101,17 @@ class EmployeeData extends React.Component {
                   </td>
                   <td>
                     <div className="is-size-6">
-                      {this.state.employeeDetail.start_date}
+                      {this.state.employeeDetail.startDate}
                     </div>
                   </td>
                   <td>
                     <div className="is-size-6">
-                      {this.state.employeeDetail.end_date}
+                      {this.state.employeeDetail.endDate}
                     </div>
                   </td>
                   <td>
                     <div className="is-size-6">
-                      {this.state.employeeDetail.employment_status}
+                      {this.state.employeeDetail.employmentStatus}
                     </div>
                   </td>
                   <td>

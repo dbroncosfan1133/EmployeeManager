@@ -17,18 +17,17 @@ module.exports = {
   },
   create: function(req, res) {
     const tempObj = {
-      full_name: req.body.full_name,
+      legalName: req.body.legalName,
       address: req.body.address,
       city: req.body.city,
       state: req.body.state,
-      zip_code: req.body.zip_code,
-      email_address: req.body.email_address,
-      phone_number: req.body.phone_number,
+      zipCode: req.body.zipCode,
+      emailAddress: req.body.emailAddress,
+      phoneNumber: req.body.phoneNumber,
       position: req.body.position,
       department: req.body.department,
-      start_Date: req.body.start_Date,
-      end_date: req.body.end_date,
-      employment_status: req.body.employment_status,
+      startDate: req.body.startDate,
+      employmentStatus: req.body.employmentStatus,
       shift: req.body.shift,
       manager: req.body.manager
     }

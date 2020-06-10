@@ -1,24 +1,23 @@
 import React from "react";
-import MainHero from "../components/MainHero/MainHero";
+import NewEmpHero from "../components/NewEmpHero/NewEmpHero";
 import ClearFormBtn from "../components/ClearFormBtn/ClearFormBtn";
 import BackBtn from "../components/BackBtn/BackBtn";
 import { Input, FormBtn } from "../components/Form/Form";
-import API from "../utils/API";
+import API from "../utils/API"
 
 class NewEmployees extends React.Component {
   state = {
-    full_name: "",
+    legalName: "",
     address: "",
     city: "",
-    state: "",
-    zip_code: "",
-    email_address: "",
-    phone_number: "",
+    st: "",
+    zipCode: "",
+    emailAddress: "",
+    phoneNumber: "",
     position: "",
     department: "",
-    start_date: "",
-    end_date: "",
-    employment_status: "",
+    startDate: "",
+    employmentStatus: "",
     shift: "",
     manager: ""
   };
@@ -32,23 +31,22 @@ class NewEmployees extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.full_name && this.state.address && this.state.city && this.state.state && this.state.zip_code && this.state.email_address
-      && this.state.phone_number && this.state.position && this.state.department && this.state.start_date && this.state.end_date && this.state.employment_status
+    if (this.state.legalName && this.state.address && this.state.city && this.state.st && this.state.zipCode && this.state.emailAddress
+      && this.state.phoneNumber && this.state.position && this.state.department && this.state.startDate && this.state.employmentStatus
       && this.state.shift && this.state.manager) {
       API.saveEmployee({
-        full_name: this.state.full_name,
+        legalName: this.state.legalName,
         address: this.state.address,
         city: this.state.city,
-        state: this.state.state,
-        zip_code: this.state.zip_code,
-        email_address: this.state.email_address,
-        phone_number: this.state.phone_number,
+        st: this.state.st,
+        zipCode: this.state.zipCode,
+        emailAddress: this.state.emailAddress,
+        phoneNumber: this.state.phoneNumber,
         position: this.state.position,
         department: this.state.department,
-        start_date: this.state.start_date,
-        end_date: this.state.end_date,
-        employment_status: this.state.employment_status,
-        shift: this.state.state,
+        startDate: this.state.startDate,
+        employmentStatus: this.state.employmentStatus,
+        shift: this.state.shift,
         manager: this.state.manager
       })
         .then(res => this.clearForm())
@@ -58,18 +56,17 @@ class NewEmployees extends React.Component {
 
   clearForm = () => {
     this.setState({
-      full_name: "",
+      legalName: "",
       address: "",
       city: "",
-      state: "",
-      zip_code: "",
-      email_address: "",
-      phone_number: "",
+      st: "",
+      zipCode: "",
+      emailAddress: "",
+      phoneNumber: "",
       position: "",
       department: "",
-      start_date: "",
-      end_date: "",
-      employment_status: "",
+      startDate: "",
+      employmentStatus: "",
       shift: "",
       manager: ""
     });
@@ -78,18 +75,23 @@ class NewEmployees extends React.Component {
   render() {
     return (
       <div>
-        <MainHero />
-        <BackBtn />
+        <NewEmpHero />
         <div className="container">
-          <h1 className="is-size-3">Enter New Employee</h1>
+          <div className="level">
+            <div className="level-left">
+              <div className="level-item">
+                <h1 className="is-size-3">Enter A New Employee</h1>
+              </div>
+            </div>
+          </div>
           <hr />
           <div className="columns">
             <div className="column is-9">
               <form>
                 <Input
-                  value={this.state.full_name}
+                  value={this.state.legalName}
                   onChange={this.handleInputChange}
-                  name="full_name"
+                  name="legalName"
                   placeholder="Employee Full Name"
                 />
                 <Input
@@ -105,27 +107,27 @@ class NewEmployees extends React.Component {
                   placeholder="City"
                 />
                 <Input
-                  value={this.state.state}
+                  value={this.state.st}
                   onChange={this.handleInputChange}
-                  name="state"
+                  name="st"
                   placeholder="State"
                 />
                 <Input
-                  value={this.state.zip_code}
+                  value={this.state.zipCode}
                   onChange={this.handleInputChange}
-                  name="zip_code"
+                  name="zipCode"
                   placeholder="Zip Code"
                 />
                 <Input
-                  value={this.state.email_address}
+                  value={this.state.emailAddress}
                   onChange={this.handleInputChange}
-                  name="email_address"
+                  name="emailAddress"
                   placeholder="Email Address"
                 />
                 <Input
-                  value={this.state.phone_number}
+                  value={this.state.phoneNumber}
                   onChange={this.handleInputChange}
-                  name="phone_number"
+                  name="phoneNumber"
                   placeholder="Phone Number"
                 />
                 <Input
@@ -141,21 +143,15 @@ class NewEmployees extends React.Component {
                   placeholder="Department"
                 />
                 <Input
-                  value={this.state.start_date}
+                  value={this.state.startDate}
                   onChange={this.handleInputChange}
-                  name="start_date"
+                  name="startDate"
                   placeholder="Start Date"
                 />
                 <Input
-                  value={this.state.end_date}
+                  value={this.state.employmentStatus}
                   onChange={this.handleInputChange}
-                  name="end_date"
-                  placeholder="End Date"
-                />
-                <Input
-                  value={this.state.employment_status}
-                  onChange={this.handleInputChange}
-                  name="employment_status"
+                  name="employmentStatus"
                   placeholder="Status"
                 />
                 <Input
@@ -173,10 +169,10 @@ class NewEmployees extends React.Component {
                 <div className="field is-grouped">
                   <p className="control">
                     <FormBtn
-                      disabled={!(this.state.full_name && this.state.address && this.state.city && this.state.state
-                        && this.state.zip_code && this.state.email_address &&
-                        this.state.phone_number && this.state.position &&
-                        this.state.department && this.state.employment_status && this.state.shift && this.state.manager)}
+                      disabled={!(this.state.legalName && this.state.address && this.state.city && this.state.st
+                        && this.state.zipCode && this.state.emailAddress &&
+                        this.state.phoneNumber && this.state.position &&
+                        this.state.department && this.state.employmentStatus && this.state.shift && this.state.manager)}
                       onClick={this.handleFormSubmit}
                     >
                       Submit
